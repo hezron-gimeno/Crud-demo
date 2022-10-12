@@ -1,4 +1,11 @@
 package com.hezron.CrudAPIS.repo;
 
-public interface UserRepository {
+import com.hezron.CrudAPIS.domain.User;
+import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
+
+
+public interface UserRepository extends CrudRepository<User, Long> {
+    List<User> findAll();
 }
