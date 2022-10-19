@@ -17,15 +17,16 @@ public class UserService {
     UserRepository userRepository;
 
 //    create a user
-public User createUser(User user){
 
+    public User createUser(User user){
     try{
         userRepository.save(user);
         return user;
     }catch (Exception e){
      log.error("error occurs", e);
-     return null;
+        return null;
     }
+
 }
 
 //update User
@@ -37,13 +38,15 @@ public User createUser(User user){
 
     }catch (Exception e){
         log.error("error occurred", e);
+
     }
-    return null;
+        return null;
+
 
     }
 
 //    view Users
-    public List<User> viewUsers(){
+    public List<User> viewUsers() {
     return userRepository.findAll();
     }
 

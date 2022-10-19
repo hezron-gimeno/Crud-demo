@@ -1,14 +1,16 @@
 package com.hezron.CrudAPIS.domain;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.security.Timestamp;
+import java.time.LocalDateTime;
 
 
 @Entity
 @Data
-@Table(name = "tbl_Users")
+@Table(name = "tbl_users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,10 +27,12 @@ public class User {
     @Column(name = "active",nullable = false)
     private int active;
 
+    @CreationTimestamp
     @Column(name = "created_at",nullable = false)
-    private Timestamp createdAt;
+    private LocalDateTime createdAt;
 
-    @Column(name = "updated_at",nullable = false)
-    private Timestamp updatedAt;
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
 }
