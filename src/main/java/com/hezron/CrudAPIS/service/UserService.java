@@ -51,7 +51,8 @@ public class UserService {
 //    view Users
     public List<User> viewUsers(int pageSize, int pageNumber) {
        Pageable pageable = PageRequest.of(pageNumber, pageSize);
-       Page page = userRepository.findAll(pageable);
+        Page page = userRepository.findAllByOrderByIdDesc(pageable);
+//       Page page = userRepository.findAll(pageable);
        return page.getContent();
 
 //       ************
