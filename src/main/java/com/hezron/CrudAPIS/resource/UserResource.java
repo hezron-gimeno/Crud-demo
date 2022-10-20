@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Slf4j
@@ -21,9 +20,10 @@ public class UserResource {
 
 //    GET
 @GetMapping()
-    public ResponseEntity<?> getUsers(){
+    public ResponseEntity<?> getUsers(@RequestParam(name="page") int page, @RequestParam(name= "size") int size){
         try{
-            List<User> userList = userService.viewUsers();
+            page = page -1;
+            List<User> userList = userService.viewUsers(size, page);
             return new ResponseEntity(userList, HttpStatus.OK);
         }catch (Exception e){
             log.error(".....", e);
