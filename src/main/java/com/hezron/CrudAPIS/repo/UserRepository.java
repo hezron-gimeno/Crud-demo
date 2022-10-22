@@ -16,4 +16,7 @@ public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 //    Page<User> findAllOrderByIdDesc(Pageable pageable);
 //    sort by the latest on
 Page<User> findAllByOrderByIdDesc(Pageable pageable);
+
+//search
+    Page<User> findAllByNameContainingOrderById(String name, Pageable pageable);
 }

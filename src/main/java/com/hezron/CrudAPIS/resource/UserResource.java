@@ -20,10 +20,10 @@ public class UserResource {
 
 //    GET
 @GetMapping()
-    public ResponseEntity<?> getUsers(@RequestParam(name="page") int page, @RequestParam(name= "size") int size){
+    public ResponseEntity<?> getUsers(@RequestParam(name="page") int page, @RequestParam(name= "size") int size, @RequestParam(required = false, name="search") String search){
         try{
             page = page -1;
-            List<User> userList = userService.viewUsers(size, page);
+            List<User> userList = userService.viewUsers(size, page, search);
             return new ResponseEntity(userList, HttpStatus.OK);
         }catch (Exception e){
             log.error(".....", e);

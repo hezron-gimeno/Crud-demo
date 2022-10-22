@@ -49,14 +49,15 @@ public class UserService {
     }
 
 //    view Users
-    public List<User> viewUsers(int pageSize, int pageNumber) {
+    public List<User> viewUsers(int pageSize, int pageNumber, String search) {
        Pageable pageable = PageRequest.of(pageNumber, pageSize);
-        Page page = userRepository.findAllByOrderByIdDesc(pageable);
+        Page page = userRepository.findAllByNameContainingOrderById(search,pageable);
 //       Page page = userRepository.findAll(pageable);
        return page.getContent();
 
 //       ************
    //    Page userPage = userRepository.findAll(pageable);
+//         Page page = userRepository.findAllByOrderByIdDesc(pageable);
 //       userPage.getTotalPages();
 //       userPage.getTotalElements();
 //    return userRepository.findAll();
